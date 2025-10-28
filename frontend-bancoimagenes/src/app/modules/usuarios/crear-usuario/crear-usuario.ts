@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ɵInternalFormsSharedModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioService } from '../../../shared/services/usuario';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
+  standalone:true,
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.html',
-  styleUrl: './crear-usuario.scss'
+  styleUrl: './crear-usuario.scss',
+  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule, CommonModule]
 })
 export class CrearUsuarioComponent {
   form: FormGroup;
