@@ -13,12 +13,24 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   form: FormGroup;
+  loading = false;
+  showPassword = false;
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+    const input = document.querySelector('input[formControlName="password"]') as HTMLInputElement;
+    const icon = document.querySelector('.eye-icon');
+    if (input) {
+      input.type = this.showPassword ? 'text' : 'password';
+      icon?.classList.toggle('show-password', this.showPassword);
+    }
   }
 
   login(){
@@ -34,7 +46,10 @@ export class LoginComponent {
             this.router.navigate(['/carga']);
           }
         },
-        error: () => alert('Credenciales invalidas')
+        error: () => {
+          this.loading = false;
+          alert('Credenciales invalidas');
+        }
       });
     }
   }
