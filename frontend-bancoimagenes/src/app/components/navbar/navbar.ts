@@ -1,27 +1,33 @@
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../../shared/services/auth';
 
 @Component({
-  standalone: true,
   selector: 'app-navbar',
+  standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.scss',
+  styleUrl: './navbar.scss'
 })
 export class NavbarComponent {
-  constructor(public auth: AuthService) {}
+  private jwtHelper = inject(JwtHelperService);
+  private router = inject(Router);
 
-  get isVisible(): boolean {
-    return this.auth.isLoggedIn();
+  isAdmin = false;
+
+  ngOnInit() {
+    const token = localStorage.getItem('token');
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      const decoded = this.jwtHelper.decodeToken(token);
+      this.isAdmin = decoded?.role === 'ROLE_ADMIN';
+    }
   }
 
   logout() {
-    this.auth.logout();
-  }
-
-  get role() {
-    return this.auth.getRole();
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }
+
