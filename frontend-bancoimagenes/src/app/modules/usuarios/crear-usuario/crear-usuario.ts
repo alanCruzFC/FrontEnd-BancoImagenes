@@ -17,7 +17,9 @@ export class CrearUsuarioComponent {
   constructor(private fb: FormBuilder, private usuarioService: UsuarioService){
     this.form = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      rol: ['', Validators.required]
     });
   }
 
