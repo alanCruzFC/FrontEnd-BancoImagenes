@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators, ɵInternalFormsSharedModule, Reacti
 import { UsuarioService } from '../../../shared/services/usuario';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   standalone:true,
   selector: 'app-crear-usuario',
