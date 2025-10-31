@@ -6,7 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     providedIn: 'root'
 })
 export class AdminGuard implements CanActivate {
-    constructor(private router: Router, private jwtHelperService){}
+    constructor(private router: Router, private JwtHelperService){}
 
     canActivate(): boolean {
         const token = localStorage.getItem('token');
