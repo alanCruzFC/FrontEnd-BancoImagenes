@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ɵInternalFormsSharedModule, ReactiveFormsModule } from '@angular/forms';
 import { UsuarioService } from '../../../shared/services/usuario';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   standalone:true,
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class CrearUsuarioComponent {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private usuarioService: UsuarioService){
+  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private router: Router){
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -25,7 +26,9 @@ export class CrearUsuarioComponent {
   crear() {
     if (this.form.valid) {
       this.usuarioService.crear(this.form.value).subscribe({
-        next: msg => alert(msg),
+        next: msg => {alert(msg);
+        this.router.navigate(['/usuarios']);
+        },
         error: err => alert('Error en la creacion del usuario')
       });
     }
