@@ -10,9 +10,12 @@ export const routes: Routes = [
   { path: 'usuarios/nuevo',
     loadComponent: () => import('./modules/usuarios/crear-usuario/crear-usuario')
       .then(m => m.CrearUsuarioComponent),
-    canActivate: [AdminGuard]
-  },
+    canActivate: [AdminGuard]},
   { path: 'usuarios', component: ListarRegistrosComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'carga', component: CargaComponent }
+  { path: 'carga', component: CargaComponent },
+  { path: 'Equipos/crear',
+    loadComponent: () => import('./modules/equipos/crear-equipo')
+      .then(m => m.CrearEquipo),
+    canActivate: [AdminGuard]}
 ];

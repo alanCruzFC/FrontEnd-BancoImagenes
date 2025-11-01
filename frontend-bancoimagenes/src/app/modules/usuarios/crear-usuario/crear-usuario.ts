@@ -13,13 +13,15 @@ import { Router } from '@angular/router';
 })
 export class CrearUsuarioComponent {
   form: FormGroup;
+  equipos: any[] = [];
 
   constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private router: Router){
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      rol: ['', Validators.required]
+      rol: ['', Validators.required],
+      equipoId:[null, Validators.required]
     });
   }
 

@@ -61,6 +61,12 @@
         El rol es obligatorio.
       </div>
     </div>
+    <div>
+      <select formControlName="equipoId" class="form-control">
+        <option [ngValue]="null">Seleccione un equipo</option>
+        <option *ngFor="let eq of equipos" [value]="eq.id">{{ eq.nombre }}</option>
+      </select>
+    </div>
 
     <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Crear</button>
   </form>

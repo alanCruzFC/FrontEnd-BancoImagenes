@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="crear()">
+  <div class="form-group">
+    <label for="nombre">Nombre del equipo</label>
+    <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre del equipo" />
+  </div>
+
+  <div class="form-group">
+    <label for="jefeId">Jefe del equipo</label>
+    <select class="form-control" formControlName="jefeId">
+      <option [ngValue]="null">Seleccione un jefe</option>
+      <option *ngFor="let u of usuarios" [value]="u.id">{{ u.username }}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Crear equipo</button>
+</form>
