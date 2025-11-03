@@ -7,16 +7,25 @@
         <th>ID</th>
         <th>Usuario</th>
         <th>Email</th>
+        <th>Rol</th>
         <th>Activo</th>
+        <th>Fecha de creación</th>
+        <th>Equipo</th>
+        <th>Jefe de equipo</th>
         <th>Acciones</th>
       </tr>
     </thead>
+
     <tbody>
       <tr *ngFor="let usuario of usuarios">
         <td>{{ usuario.id }}</td>
         <td>{{ usuario.username }}</td>
         <td>{{ usuario.email || '—' }}</td>
+        <td>{{ usuario.rol || '—' }}</td>
         <td>{{ usuario.activo ? 'Sí' : 'No' }}</td>
+        <td>{{ usuario.fechaCreacion || '—' }}</td>
+        <td>{{ usuario.equipo?.nombre || '—' }}</td>
+        <td>{{ usuario.equipo?.jefe?.username || '—' }}</td>
         <td>
           <button class="btn btn-sm btn-outline-primary me-1">Editar</button>
           <button class="btn btn-sm btn-outline-danger">Eliminar</button>

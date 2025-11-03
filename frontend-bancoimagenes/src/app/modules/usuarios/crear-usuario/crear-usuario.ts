@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ɵInternalFormsSharedModule, Reacti
 import { UsuarioService } from '../../../shared/services/usuario';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { EquipoService } from '../../../shared/services/equipo';
 
 @Component({
   standalone:true,
@@ -15,7 +16,7 @@ export class CrearUsuarioComponent {
   form: FormGroup;
   equipos: any[] = [];
 
-  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private router: Router){
+  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private equipoService: EquipoService, private router: Router){
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -34,5 +35,12 @@ export class CrearUsuarioComponent {
         error: err => alert('Error en la creacion del usuario')
       });
     }
+  }
+
+  ngOnInit() {
+    this.equipoService.listar().subscribe({
+      next: data => this.equipos = data,
+      error: err => alert('Error al cargar equipos')
+    });
   }
 }

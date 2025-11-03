@@ -4,6 +4,7 @@ import { UsuarioService } from '../../../shared/services/usuario';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 @Component({
   standalone:true,
   selector: 'app-listar-registros',
@@ -18,9 +19,15 @@ export class ListarRegistrosComponent implements OnInit {
 
   ngOnInit() {
     this.usuarioService.listar().subscribe({
-      next: data => this.usuarios = data,
+      next: data => {
+        console.log(data);
+       this.usuarios = data;
+      },
       error: err => alert('Error en la carga de usuarios')
+      
     });
+    
   }
-
 }
+
+

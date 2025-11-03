@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: 'usuarios', component: ListarRegistrosComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'carga', component: CargaComponent },
-  { path: 'Equipos/nuevo',
+  { path: 'equipos/nuevo',
     loadComponent: () => import('./modules/equipos/crear-equipo')
       .then(m => m.CrearEquipo),
     canActivate: [AdminGuard]}

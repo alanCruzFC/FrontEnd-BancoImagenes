@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { EquipoService } from '../../shared/services/equipo';
 
 @Component({
+  standalone: true,
   selector: 'app-crear-equipo',
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './crear-equipo.html',
