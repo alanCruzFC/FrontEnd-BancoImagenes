@@ -28,6 +28,15 @@ export class ListarRegistrosComponent implements OnInit {
     });
     
   }
+  verContrasena(id: number) {
+    this.usuarioService.obtenerContrasena(id).subscribe({
+      next: contrasena => {
+        alert(`Contraseña: ${contrasena}`);
+      },
+      error: err => alert('Error al obtener la contraseña')
+    });
+  }
+
 }
 
 

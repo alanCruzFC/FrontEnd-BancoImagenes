@@ -21,4 +21,9 @@ export class UsuarioService {
     obtener(id: number): Observable<Usuario>{
         return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
     }
+
+    obtenerContrasena(id: number): Observable<string> {
+    return this.http.get(`http://localhost:8080/api/usuarios/${id}/contrasena`, { responseType: 'text' });
+    }
+
 }

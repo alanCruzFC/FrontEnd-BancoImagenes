@@ -1,27 +1,30 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-  <a class="navbar-brand" routerLink="/">Banco de Imágenes</a>
+  <a class="navbar-brand" routerLink="/usuarios">Banco de Imágenes</a>
 
-  <div class="collapse navbar-collapse">
-    <ul class="navbar-nav me-auto">
+  <div class="collapse navbar-collapse d-flex justify-content-between align-items-center w-100">
+    <ul class="navbar-nav flex-row align-items-center gap-3 mb-0">
+
+      <button class="btn btn-icon text-light ms-3" (click)="logout()" title="Cerrar sesión">
+        <i class="bi bi-box-arrow-right fs-4"></i>
+      </button>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/imagenes">Imágenes</a>
-      </li>
-
-      <li class="nav-item" *ngIf="isAdmin">
-        <a class="nav-link" routerLink="/usuarios/nuevo">Crear Usuario</a>
-      </li>
-
-      <li class="nav-item" *ngIf="isAdmin">
-        <a class="nav-link" routerLink="/admin/api-keys">API Keys</a>
+        <a class="nav-link" routerLink="/imagenes" routerLinkActive="active">Imágenes</a>
       </li>
       <li class="nav-item" *ngIf="isAdmin">
-        <a class="nav-link" routerLink="/equipos">equipos</a>
+        <a class="nav-link" routerLink="/usuarios/nuevo" routerLinkActive="active">Crear Usuario</a>
       </li>
       <li class="nav-item" *ngIf="isAdmin">
-        <a class="nav-link" routerLink="/equipos/nuevo">crear equipos</a>
+        <a class="nav-link" routerLink="/admin/api-keys" routerLinkActive="active">API Keys</a>
       </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link" routerLink="/equipos" routerLinkActive="active">Equipos</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link" routerLink="/equipos/nuevo" routerLinkActive="active">Crear Equipos</a>
+      </li>
+      
     </ul>
 
-    <button class="btn btn-outline-light" (click)="logout()">Cerrar sesión</button>
+    
   </div>
 </nav>

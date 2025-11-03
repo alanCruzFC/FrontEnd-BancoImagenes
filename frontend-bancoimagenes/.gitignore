@@ -60,4 +60,3 @@ main.server.ts
 *.env.json
 secrets.json
 output.json
-
