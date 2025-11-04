@@ -55,7 +55,8 @@
       >
         <option value="" disabled selected>Selecciona un rol</option>
         <option value="admin">Administrador</option>
-        <option value="ROLE_USER">Usuario</option>
+        <option value="USER">Usuario</option>
+        <option value="SUPERVISOR">Director</option>
       </select>
       <div class="invalid-feedback" *ngIf="form.get('rol')?.invalid && form.get('rol')?.touched">
         El rol es obligatorio.

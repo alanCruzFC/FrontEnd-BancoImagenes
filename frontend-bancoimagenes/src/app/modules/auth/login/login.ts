@@ -33,22 +33,36 @@ export class LoginComponent {
     }
   }
 
-  login(){
+  login() {
     if (this.form.valid) {
       this.auth.login(this.form.value).subscribe({
         next: ({ token }) => {
-          localStorage.setItem('token', token );
+          localStorage.setItem('token', token);
           const role = this.auth.getRole();
           console.log(role);
-          if (role === 'ROLE_ADMIN') {
-            this.router.navigate(['/usuarios']);
-          } else {
-            this.router.navigate(['/carga']);
+
+          switch (role) {
+            case 'ROLE_ADMIN':
+              this.router.navigate(['/usuarios']);
+              break;
+            case 'ROLE_USER':
+              this.router.navigate(['/carga']);
+              break;
+            case 'ROLE_SUPERVISOR':
+              this.router.navigate(['/usuarios']);
+              break;
+            default:
+              this.router.navigate(['/login']);
+              break;
           }
         },
-        error: () => {
+        error: (err) => {
           this.loading = false;
-          alert('Credenciales invalidas');
+          if (err.status === 401) {
+            alert('Credenciales inválidas');
+          } else {
+            alert('Error al iniciar sesión');
+          }
         }
       });
     }

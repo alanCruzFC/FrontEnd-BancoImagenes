@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { CrearUsuarioComponent } from './modules/usuarios/crear-usuario/crear-usuario';
 import { ListarRegistrosComponent } from './modules/usuarios/listar-registros/listar-registros';
 import { LoginComponent } from './modules/auth/login/login';
 import { CargaComponent } from './modules/carga-imagenes/carga/carga';
