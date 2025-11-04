@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UsuarioService } from '../../shared/services/usuario';
 import { Router } from '@angular/router';
-import { EquipoService } from '../../shared/services/equipo';
+import { EquipoService } from '../../../shared/services/equipo';
+import { UsuarioService } from '../../../shared/services/usuario';
 
 @Component({
   standalone: true,

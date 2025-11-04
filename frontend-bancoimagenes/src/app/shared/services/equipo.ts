@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Usuario } from "../../models/usuario.model";
+import { Equipo } from "../../models/equipo.model";
 
 
 @Injectable({ providedIn: 'root' })
@@ -10,8 +11,8 @@ export class EquipoService {
 
     constructor(private http: HttpClient){}
 
-    listar(): Observable<Usuario[]> {
-        return this.http.get<Usuario[]>(this.apiUrl);
+    listar(): Observable<Equipo[]> {
+        return this.http.get<Equipo[]>(this.apiUrl);
     }
 
     crear(equipo: any): Observable<string> {

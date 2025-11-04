@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2>Lista de Equipos</h2>
+
+  <table class="table table-bordered table-striped" *ngIf="equipos.length > 0; else sinEquipos">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Nombre Equipo</th>
+        <th>Jefe</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let equipos of equipos">
+        <td>{{ equipos.id }}</td>
+        <td>{{ equipos.nombre}}</td>
+        <td>{{ equipos?.jefe?.username || '—' }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-primary me-1">Editar</button>
+          <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #sinEquipos>
+    <div class="alert alert-info mt-3">
+      No hay equipos registrados.
+    </div>
+  </ng-template>
+</div>

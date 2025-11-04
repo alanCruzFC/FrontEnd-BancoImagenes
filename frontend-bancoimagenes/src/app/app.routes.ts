@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'carga', component: CargaComponent },
   { path: 'equipos/nuevo',
-    loadComponent: () => import('./modules/equipos/crear-equipo')
+    loadComponent: () => import('./modules/equipos/crear-equipos/crear-equipo')
       .then(m => m.CrearEquipo),
     canActivate: [AdminGuard]}
 ];
