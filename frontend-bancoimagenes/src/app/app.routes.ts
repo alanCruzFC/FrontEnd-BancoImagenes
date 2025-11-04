@@ -3,6 +3,7 @@ import { ListarRegistrosComponent } from './modules/usuarios/listar-registros/li
 import { LoginComponent } from './modules/auth/login/login';
 import { CargaComponent } from './modules/carga-imagenes/carga/carga';
 import { AdminGuard } from './core/guards/admin-guard';
+import { ListarEquipos } from './modules/equipos/listar-equipos/listar-equipos';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -11,6 +12,7 @@ export const routes: Routes = [
       .then(m => m.CrearUsuarioComponent),
     canActivate: [AdminGuard]},
   { path: 'usuarios', component: ListarRegistrosComponent },
+  { path: 'equipos', component: ListarEquipos },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'carga', component: CargaComponent },
   { path: 'equipos/nuevo',
